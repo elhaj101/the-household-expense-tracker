@@ -144,3 +144,21 @@ def display_menu():
     print("f. Reset and restart system")
     print("g. Quit system")
     print(Fore.CYAN + "------------\n")
+
+def calculate_current_savings():
+    """Calculate and display current monthly and annual expenses and savings."""
+    total_spending = sum(user_data["spending"].values())
+    monthly_savings = user_data["salary"] - total_spending
+    annual_savings = monthly_savings * 12
+    annual_spending = total_spending * 12
+
+    print(Fore.CYAN + "\n--- Current Savings ---")
+    print(Fore.GREEN + f"Monthly Salary: ${user_data['salary']:.2f}")
+    print(Fore.RED + f"Monthly Expenses: ${total_spending:.2f}")
+    print(Fore.GREEN + f"Monthly Savings: ${monthly_savings:.2f}")
+    print(Fore.CYAN + "-----------------------")
+    print(Fore.GREEN + f"Annual Salary: ${user_data['salary'] * 12:.2f}")
+    print(Fore.RED + f"Annual Expenses: ${annual_spending:.2f}")
+    print(Fore.GREEN + f"Annual Savings: ${annual_savings:.2f}")
+    print(Fore.CYAN + "-----------------------\n")
+
