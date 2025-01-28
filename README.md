@@ -87,12 +87,275 @@ The **Personal Household Expense Tracker** is designed for:
 
 ---
 
+## Output Examples for Each Function
+
+### 1. **Greet User**
+When the application starts, the user is greeted based on the time of day:
+
+```
+Hello, it's a good morning!
+Welcome to 'The Personal Household Expense Tracker'.
+```
+
+---
+
+### 2. **Collect User Info**
+The user is prompted to enter their name and monthly salary:
+
+```
+Enter your name: Ali El Haj
+Enter your monthly salary (in USD): 3000
+
+Great, your data will remain private.
+```
+
+---
+
+### 3. **Display Spending Categories**
+The user is shown the predefined spending categories and descriptions:
+
+```
+Here's your household spending categories. Take a look at them before providing data:
+- Housing: Rent or mortgage payments
+- Utilities: Electricity, gas, water, and trash services
+- Groceries: Food and household supplies
+- Transportation: Fuel, public transport, or vehicle maintenance
+- Insurance: Health, home, auto, or life insurance premiums
+- Healthcare: Out-of-pocket medical expenses, prescriptions, and dental care
+- Childcare/Education: Tuition, daycare, or extracurricular activities for children
+- Internet and Phone: Monthly bills for internet service and mobile phone plans
+- Entertainment: Subscriptions (like Netflix), dining out, and recreational activities
+- Personal Care: Toiletries, haircuts, and other cosmetics
+
+Type 'Y' to continue: Y
+```
+
+---
+
+### 4. **Collect Spending**
+The user enters their monthly spending for each category:
+
+```
+Please enter your monthly spending for each category (enter 0 if not applicable):
+
+Housing: 1000
+Utilities: 200
+Groceries: 300
+Transportation: 150
+Insurance: 100
+Healthcare: 50
+Childcare/Education: 0
+Internet and Phone: 100
+Entertainment: 200
+Personal Care: 50
+
+Spending data collected successfully.
+```
+
+---
+
+### 5. **Display Menu**
+The user is shown the sticky menu with action options:
+
+```
+--- Menu ---
+a. Calculate current monthly/annual savings
+b. Analyze potential savings by category
+c. Forecast 12-month spending/savings
+d. Save data to database
+e. Load data from database
+f. Reset and restart system
+g. Quit system
+------------
+
+Select an option (a-g): 
+```
+
+---
+
+### 6. **Calculate Current Savings**
+The application calculates and displays the user's current savings:
+
+```
+--- Current Savings ---
+Monthly Salary: $3000.00
+Monthly Expenses: $2150.00
+Monthly Savings: $850.00
+-----------------------
+Annual Salary: $36000.00
+Annual Expenses: $25800.00
+Annual Savings: $10200.00
+-----------------------
+```
+
+---
+
+### 7. **Analyze Potential Savings**
+The user selects categories to reduce spending and enters reduction percentages:
+
+```
+Select categories to reduce spending:
+1. Housing
+2. Utilities
+3. Groceries
+4. Transportation
+5. Insurance
+6. Healthcare
+7. Childcare/Education
+8. Internet and Phone
+9. Entertainment
+10. Personal Care
+
+Enter the numbers of categories (comma-separated): 9
+Enter the percentage reduction for Entertainment (e.g., 10 for 10%): 20
+Potential savings for Entertainment: $40.00
+
+Total potential savings: $40.00
+```
+
+---
+
+### 8. **Forecast Savings**
+The application forecasts savings and expenses over the next 12 months:
+
+```
+--- 12-Month Forecast ---
+Monthly Salary: $3000.00
+Monthly Expenses: $2150.00
+Monthly Savings: $850.00
+-------------------------
+Month 1:
+  Cumulative Savings: $850.00
+  Cumulative Expenses: $2150.00
+Month 2:
+  Cumulative Savings: $1700.00
+  Cumulative Expenses: $4300.00
+...
+Month 12:
+  Cumulative Savings: $10200.00
+  Cumulative Expenses: $25800.00
+-------------------------
+Total Annual Savings: $10200.00
+Total Annual Expenses: $25800.00
+-------------------------
+```
+
+---
+
+### 9. **Save Data**
+The user saves their data to the database:
+
+```
+Data saved to database: expense_tracker
+```
+
+---
+
+### 10. **Load Data**
+The user loads their saved data by entering their name:
+
+```
+Enter your name to load your data: Ali El Haj
+Data loaded successfully!
+```
+
+---
+
+### 11. **Reset System**
+The user resets the system to clear all data:
+
+```
+System reset. Restarting...
+```
+
+---
+
+### 12. **Quit System**
+The user exits the application:
+
+```
+Thank you for using 'The Personal Household Expense Tracker'! Keep tracking and managing your expenses effectively.
+```
+
+---
+
+### Example Workflow
+Here’s an example of a full user interaction:
+
+```
+Hello, it's a good morning!
+Welcome to 'The Personal Household Expense Tracker'.
+
+Enter your name: Ali El Haj
+Enter your monthly salary (in USD): 3000
+
+Great, your data will remain private.
+
+Here's your household spending categories. Take a look at them before providing data:
+- Housing: Rent or mortgage payments
+- Utilities: Electricity, gas, water, and trash services
+- Groceries: Food and household supplies
+- Transportation: Fuel, public transport, or vehicle maintenance
+- Insurance: Health, home, auto, or life insurance premiums
+- Healthcare: Out-of-pocket medical expenses, prescriptions, and dental care
+- Childcare/Education: Tuition, daycare, or extracurricular activities for children
+- Internet and Phone: Monthly bills for internet service and mobile phone plans
+- Entertainment: Subscriptions (like Netflix), dining out, and recreational activities
+- Personal Care: Toiletries, haircuts, and other cosmetics
+
+Type 'Y' to continue: Y
+
+Please enter your monthly spending for each category (enter 0 if not applicable):
+
+Housing: 1000
+Utilities: 200
+Groceries: 300
+Transportation: 150
+Insurance: 100
+Healthcare: 50
+Childcare/Education: 0
+Internet and Phone: 100
+Entertainment: 200
+Personal Care: 50
+
+Spending data collected successfully.
+
+--- Menu ---
+a. Calculate current monthly/annual savings
+b. Analyze potential savings by category
+c. Forecast 12-month spending/savings
+d. Save data to database
+e. Load data from database
+f. Reset and restart system
+g. Quit system
+------------
+
+Select an option (a-g): a
+
+--- Current Savings ---
+Monthly Salary: $3000.00
+Monthly Expenses: $2150.00
+Monthly Savings: $850.00
+-----------------------
+Annual Salary: $36000.00
+Annual Expenses: $25800.00
+Annual Savings: $10200.00
+-----------------------
+
+Select an option (a-g): g
+
+Thank you for using 'The Personal Household Expense Tracker'! Keep tracking and managing your expenses effectively.
+```
+
+---
+
+
 ## Limitations
 1. **Command-Line Interface**: The app is currently limited to a command-line interface, which may not appeal to users who prefer graphical interfaces.  
 2. **Google Sheets Dependency**: Data persistence relies on Google Sheets, which requires an internet connection and a Google account.  
 3. **Predefined Categories**: The spending categories are fixed and cannot be customized by the user.  
 4. **Manual Input**: Users must manually input their spending data, which can be time-consuming.  
-5. **No Advanced Analytics**: The app provides basic financial analysis but lacks advanced features like trend analysis or visualizations.  
+
 
 ---
 
