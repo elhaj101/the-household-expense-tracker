@@ -162,3 +162,38 @@ def calculate_current_savings():
     print(Fore.GREEN + f"Annual Savings: ${annual_savings:.2f}")
     print(Fore.CYAN + "-----------------------\n")
 
+def analyze_potential_savings():
+    """Analyze potential savings by reducing spending in selected categories."""
+    print("\nSelect categories to reduce spending:")
+    for i, category in enumerate(SPENDING_CATEGORIES, 1):
+        print(f"{i}. {category}")
+
+    selected_categories = input("\nEnter the numbers of categories (comma-separated): ").strip().split(",")
+    potential_savings = 0
+
+    for idx in selected_categories:
+        try:
+            idx = int(idx.strip()) - 1  # Convert to zero-based index
+            if 0 <= idx < len(SPENDING_CATEGORIES):
+                category = SPENDING_CATEGORIES[idx]
+                current_spending = user_data["spending"][category]
+
+                # Prompt for reduction percentage
+                while True:
+                    try:
+                        reduction_percent = float(input(f"Enter the percentage reduction for {category} (e.g., 10 for 10%): "))
+                        if 0 <= reduction_percent <= 100:
+                            savings = current_spending * (reduction_percent / 100)
+                            potential_savings += savings
+                            print(Fore.GREEN + f"Potential savings for {category}: ${savings:.2f}")
+                            break
+                        else:
+                            print(Fore.RED + "Invalid input! Percentage must be between 0 and 100.")
+                    except ValueError:
+                        print(Fore.RED + "Invalid input! Please enter a number.")
+            else:
+                print(Fore.RED + f"Invalid category number: {idx + 1}")
+        except ValueError:
+            print(Fore.RED + "Invalid input! Please enter valid category numbers.")
+
+    print(Fore.GREEN + f"\nTotal potential savings: ${potential_savings:.2f}\n")
