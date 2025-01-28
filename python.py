@@ -112,3 +112,35 @@ def collect_user_info():
 
     # Display spending categories and prompt to continue
     display_spending_categories()
+
+def collect_spending():
+    """Collect spending amounts for predefined categories."""
+    global user_data
+
+    print("Please enter your monthly spending for each category (enter 0 if not applicable):\n")
+
+    for category in SPENDING_CATEGORIES:
+        while True:
+            try:
+                amount = float(input(f"{category}: "))
+                if amount >= 0:
+                    user_data["spending"][category] = amount
+                    break
+                else:
+                    print(Fore.RED + "Invalid input! Amount must be a positive number or 0.")
+            except ValueError:
+                print(Fore.RED + "Invalid input! Please enter a number.")
+
+    print("\nSpending data collected successfully.\n")
+
+def display_menu():
+    """Display the sticky menu with action options."""
+    print(Fore.CYAN + "\n--- Menu ---")
+    print("a. Calculate current monthly/annual savings")
+    print("b. Analyze potential savings by category")
+    print("c. Forecast 12-month spending/savings")
+    print("d. Save data to database")
+    print("e. Load data from database")
+    print("f. Reset and restart system")
+    print("g. Quit system")
+    print(Fore.CYAN + "------------\n")
