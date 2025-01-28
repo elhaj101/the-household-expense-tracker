@@ -1,0 +1,12 @@
+# Ignore credentials file
+credentials.json
+
+# Ignore other sensitive files
+*.env
+*.key
+*.pem
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
