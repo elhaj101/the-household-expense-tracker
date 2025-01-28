@@ -197,3 +197,36 @@ def analyze_potential_savings():
             print(Fore.RED + "Invalid input! Please enter valid category numbers.")
 
     print(Fore.GREEN + f"\nTotal potential savings: ${potential_savings:.2f}\n")
+
+def forecast_savings():
+    """
+    Forecast the accumulation of savings and expenses over the next 12 months.
+    Expenses are displayed in red, and savings are displayed in green.
+    """
+    total_spending = sum(user_data["spending"].values())
+    monthly_savings = user_data["salary"] - total_spending
+    annual_savings = monthly_savings * 12
+    annual_spending = total_spending * 12
+
+    print(Fore.CYAN + "\n--- 12-Month Forecast ---")
+    print(Fore.GREEN + f"Monthly Salary: ${user_data['salary']:.2f}")
+    print(Fore.RED + f"Monthly Expenses: ${total_spending:.2f}")
+    print(Fore.GREEN + f"Monthly Savings: ${monthly_savings:.2f}")
+    print(Fore.CYAN + "-------------------------")
+
+    # Initialize cumulative totals
+    cumulative_savings = 0
+    cumulative_expenses = 0
+
+    # Loop through each month and calculate cumulative totals
+    for month in range(1, 13):
+        cumulative_savings += monthly_savings
+        cumulative_expenses += total_spending
+        print(Fore.CYAN + f"Month {month}:")
+        print(Fore.GREEN + f"  Cumulative Savings: ${cumulative_savings:.2f}")
+        print(Fore.RED + f"  Cumulative Expenses: ${cumulative_expenses:.2f}")
+
+    print(Fore.CYAN + "-------------------------")
+    print(Fore.GREEN + f"Total Annual Savings: ${annual_savings:.2f}")
+    print(Fore.RED + f"Total Annual Expenses: ${annual_spending:.2f}")
+    print(Fore.CYAN + "-------------------------\n")
