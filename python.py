@@ -274,3 +274,46 @@ def load_data():
             print(Fore.RED + f"\nNo data found for user: {name}\n")
     except Exception as e:
         print(Fore.RED + f"\nError loading data: {e}\n")
+
+
+def reset_system():
+    """Reset the system by clearing user data and restarting."""
+    global user_data
+    user_data = {"name": "", "salary": 0, "spending": {}}
+    print(Fore.YELLOW + "\nSystem reset. Restarting...\n")
+    main()
+
+def quit_system():
+    """Exit the system with a farewell message."""
+    print(Fore.CYAN + "\nThank you for using 'The Personal Household Expense Tracker'! Keep tracking and managing your expenses effectively.\n")
+    exit()
+
+def main():
+    """Main function to run the expense tracker."""
+    greet_user()
+    collect_user_info()
+    collect_spending()
+
+    while True:
+        display_menu()
+        choice = input("Select an option (a-g): ").strip().lower()
+
+        if choice == "a":
+            calculate_current_savings()
+        elif choice == "b":
+            analyze_potential_savings()
+        elif choice == "c":
+            forecast_savings()
+        elif choice == "d":
+            save_data()
+        elif choice == "e":
+            load_data()
+        elif choice == "f":
+            reset_system()
+        elif choice == "g":
+            quit_system()
+        else:
+            print(Fore.RED + "Invalid choice! Please select a valid option.\n")
+
+if __name__ == "__main__":
+    main()
