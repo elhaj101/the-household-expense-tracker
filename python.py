@@ -230,3 +230,47 @@ def forecast_savings():
     print(Fore.GREEN + f"Total Annual Savings: ${annual_savings:.2f}")
     print(Fore.RED + f"Total Annual Expenses: ${annual_spending:.2f}")
     print(Fore.CYAN + "-------------------------\n")
+
+def save_data():
+    """Save user data to the database."""
+    try:
+        sheet = SHEET.get_worksheet(0)
+        row = [user_data["name"], user_data["salary"]] + list(user_data["spending"].values())
+        sheet.append_row(row)
+        print(Fore.GREEN + f"\nData saved to database: {sheet.title}\n")
+    except Exception as e:
+        print(Fore.RED + f"\nError saving data: {e}\n")
+
+def load_data():
+    """Load user data from the database based on the user's name."""
+    global user_data
+
+    name = input("Enter your name to load your data: ").strip()
+    try:
+        sheet = SHEET.get_worksheet(0)
+        records = sheet.get_all_records()
+        user_record = None
+        for record in records:
+            if record["Name"].strip().lower() == name.lower():
+                user_record = record
+                break
+        if user_record:
+            user_data["name"] = user_record["Name"]
+            user_data["salary"] = float(user_record["Monthly Salary"])
+            user_data["spending"] = {
+                "Housing": float(user_record["Housing"]),
+                "Utilities": float(user_record["Utilities"]),
+                "Groceries": float(user_record["Groceries"]),
+                "Transportation": float(user_record["Transportation"]),
+                "Insurance": float(user_record["Insurance"]),
+                "Healthcare": float(user_record["Healthcare"]),
+                "Childcare/Education": float(user_record["Childcare/Education"]),
+                "Internet and Phone": float(user_record["Internet and Phone"]),
+                "Entertainment": float(user_record["Entertainment"]),
+                "Personal Care": float(user_record["Personal Care"])
+            }
+            print(Fore.GREEN + "\nData loaded successfully!\n")
+        else:
+            print(Fore.RED + f"\nNo data found for user: {name}\n")
+    except Exception as e:
+        print(Fore.RED + f"\nError loading data: {e}\n")
