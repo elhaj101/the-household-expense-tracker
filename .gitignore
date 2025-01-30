@@ -1,12 +1,10 @@
 # Ignore credentials file
 credentials.json
 
-# Ignore other sensitive files
-*.env
-*.key
-*.pem
-
-# Ignore Python virtual environment
-venv/
+core.Microsoft*
+core.mongo*
+core.python*
+env.py
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
