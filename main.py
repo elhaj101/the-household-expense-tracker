@@ -79,7 +79,7 @@ def display_spending_categories():
 
     # Prompt the user to continue
     while True:
-        response = input("\nType 'Y' to continue: ").strip().upper()
+        response = input("\nType 'Y' to continue:\n").strip().upper()
         if response == "Y":
             break
         else:
@@ -90,7 +90,7 @@ def collect_user_info():
     global user_data
 
     while True:
-        name = input("Enter your name: ").strip()
+        name = input("Enter your name:\n").strip()
         if name.replace(" ", "").isalpha():  # Check if the name contains only letters and spaces
             user_data["name"] = name
             break
@@ -99,7 +99,7 @@ def collect_user_info():
 
     while True:
         try:
-            salary = float(input("Enter your monthly salary (in USD): "))
+            salary = float(input("Enter your monthly salary (in USD):\n"))
             if salary >= 0:
                 user_data["salary"] = salary
                 break
@@ -122,7 +122,7 @@ def collect_spending():
     for category in SPENDING_CATEGORIES:
         while True:
             try:
-                amount = float(input(f"{category}: "))
+                amount = float(input(f"{category}:\n"))
                 if amount >= 0:
                     user_data["spending"][category] = amount
                     break
@@ -168,7 +168,7 @@ def analyze_potential_savings():
     for i, category in enumerate(SPENDING_CATEGORIES, 1):
         print(f"{i}. {category}")
 
-    selected_categories = input("\nEnter the numbers of categories (comma-separated): ").strip().split(",")
+    selected_categories = input("\nEnter the numbers of categories (comma-separated):\n").strip().split(",")
     potential_savings = 0
 
     for idx in selected_categories:
@@ -181,7 +181,7 @@ def analyze_potential_savings():
                 # Prompt for reduction percentage
                 while True:
                     try:
-                        reduction_percent = float(input(f"Enter the percentage reduction for {category} (e.g., 10 for 10%): "))
+                        reduction_percent = float(input(f"Enter the percentage reduction for {category} (e.g., 10 for 10%):\n"))
                         if 0 <= reduction_percent <= 100:
                             savings = current_spending * (reduction_percent / 100)
                             potential_savings += savings
@@ -245,7 +245,7 @@ def load_data():
     """Load user data from the database based on the user's name."""
     global user_data
 
-    name = input("Enter your name to load your data: ").strip()
+    name = input("Enter your name to load your data:\n").strip()
     try:
         sheet = SHEET.get_worksheet(0)
         records = sheet.get_all_records()
@@ -275,7 +275,6 @@ def load_data():
     except Exception as e:
         print(Fore.RED + f"\nError loading data: {e}\n")
 
-
 def reset_system():
     """Reset the system by clearing user data and restarting."""
     global user_data
@@ -296,7 +295,7 @@ def main():
 
     while True:
         display_menu()
-        choice = input("Select an option (a-g): ").strip().lower()
+        choice = input("Select an option (a-g):\n").strip().lower()
 
         if choice == "a":
             calculate_current_savings()
