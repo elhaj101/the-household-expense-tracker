@@ -1,1 +1,1 @@
-web: gunicorn main.py
+web: gunicorn the-household-expense-tracker.wsgi
